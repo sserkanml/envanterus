@@ -14,6 +14,7 @@ class ErrorView extends StatelessWidget {
       ),
       body: SafeArea(
           child: Center(
+              heightFactor: .8,
               child: SvgPicture.asset(context.getPath(
                   type: AssetType.svg, file: "404_error.svg")))),
     );

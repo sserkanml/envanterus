@@ -11,7 +11,17 @@ class DarkTheme {
   DarkTheme._();
 
   ThemeData theme = FlexThemeData.dark(
-    appBarBackground: Color(0xFF22282E),
+    appBarBackground: const Color(0xFF22282E),
+    subThemesData: const FlexSubThemesData(
+      inputDecoratorIsFilled: false,
+      textButtonRadius: 0.0,
+      elevatedButtonRadius: 0.0,
+      outlinedButtonRadius: 0.0,
+      inputDecoratorBorderType: FlexInputBorderType.outline,
+      inputDecoratorRadius: 0.0,
+      inputDecoratorUnfocusedHasBorder: true,
+      cardRadius: 0.0,
+    ),
     colors: const FlexSchemeColor(
       primary: Color(0xFF9FC9FF),
       primaryContainer: Color(0xff00325b),

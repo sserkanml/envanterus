@@ -11,7 +11,19 @@ class LightTheme {
   LightTheme._();
 
   ThemeData theme = FlexThemeData.light(
-    appBarBackground: Color(0xFFFFFFFF),
+    appBarBackground: const Color(0xFFFFFFFF),
+    subThemesData: const FlexSubThemesData(
+      blendOnColors: false,
+       textButtonRadius: 0.0,
+    elevatedButtonRadius: 0.0,
+    outlinedButtonRadius: 0.0,
+      inputDecoratorSchemeColor: SchemeColor.onTertiaryContainer,
+      inputDecoratorIsFilled: false,
+      inputDecoratorBorderType: FlexInputBorderType.outline,
+      inputDecoratorRadius: 0.0,
+      inputDecoratorUnfocusedHasBorder: true,
+      cardRadius: 0.0,
+    ),
     scaffoldBackground: const Color(0xffF6F8F9),
     colors: const FlexSchemeColor(
       primary: Color(0xffdc5d5a),
