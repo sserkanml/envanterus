@@ -1,4 +1,3 @@
-import 'package:envanterus/core/constant/navigator_key.dart';
 import 'package:envanterus/core/constant/path_constant.dart';
 import 'package:envanterus/core/view/error.dart';
 import 'package:envanterus/feature/authentication/view/login_view.dart';
@@ -13,19 +12,34 @@ import 'package:envanterus/feature/start/view/onboard_view.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import 'package:flutter/widgets.dart';
+
+class NavigatorKeyService {
+  final GlobalKey<NavigatorState> _rootKey = GlobalKey(
+    debugLabel: "root",
+  );
+  final GlobalKey<NavigatorState> _shellKey = GlobalKey(debugLabel: "shell");
+}
+
 class RouteGenerator {
-  GoRouter getRouter() {
-    return GoRouter(
-      navigatorKey: NavigatorKeyService.rootKey,
+
+  final _router =  GoRouter(
+      restorationScopeId: "restore",
       initialLocation: "/dashboard",
+      navigatorKey: NavigatorKeyService()._rootKey,
       errorBuilder: (context, state) {
         return const ErrorView();
       },
       routes: [
         ShellRoute(
-          navigatorKey: NavigatorKeyService.shellKey,
+          
+          navigatorKey: NavigatorKeyService()._shellKey,
+          builder: (context, state, child) {
+            return HomeView(child: child);
+          },
           routes: [
             GoRoute(
+              
                 path: PathConstant.dashboard.value,
                 pageBuilder: (context, state) {
                   return CustomTransitionPage(
@@ -61,7 +75,7 @@ class RouteGenerator {
                 name: PathConstant.items.name),
             GoRoute(
                 path: PathConstant.settings.value,
-                 pageBuilder: (context, state) {
+                pageBuilder: (context, state) {
                   return CustomTransitionPage(
                     transitionDuration: const Duration(milliseconds: 0),
                     child: const SettingsView(),
@@ -111,9 +125,6 @@ class RouteGenerator {
                 },
                 name: PathConstant.notifications.name),
           ],
-          builder: (context, state, child) {
-            return HomeView(child: child);
-          },
         ),
         GoRoute(
           path: PathConstant.login.value,
@@ -138,5 +149,10 @@ class RouteGenerator {
         ),
       ],
     );
+  
+
+
+  GoRouter getRouter() {
+    return _router;
   }
 }

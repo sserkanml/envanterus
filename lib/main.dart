@@ -15,9 +15,11 @@ void main() async {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key, required this.themeMode}) : super(key: key);
+   MyApp({Key? key, required this.themeMode}) : super(key: key);
   final AdaptiveThemeMode? themeMode;
 
+
+  final _router=RouteGenerator().getRouter();
   @override
   Widget build(BuildContext context) {
     return AdaptiveTheme(
@@ -41,7 +43,7 @@ class MyApp extends StatelessWidget {
           },
           theme: light,
           darkTheme: dark,
-          routerConfig: RouteGenerator().getRouter(),
+          routerConfig: _router,
           title: 'Envanterus',
           debugShowCheckedModeBanner: false,
         );
