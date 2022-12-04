@@ -47,7 +47,8 @@ class SettingsView extends StatelessWidget {
               height: 20,
             ),
             SizedBox(
-              width: context.dynamicWidth(.8),
+              width: context.dynamicWidth(.9),
+              height: 50,
               child: ElevatedButton(
                 onPressed: () {
            

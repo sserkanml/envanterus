@@ -45,6 +45,7 @@ dependencies:
   flutter_svg: ^1.1.6
   flex_color_scheme: ^6.1.1
   responsive_framework: ^0.2.0
+  validators: ^3.0.0
   
 
 dev_dependencies:

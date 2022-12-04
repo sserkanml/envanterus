@@ -22,135 +22,135 @@ class NavigatorKeyService {
 }
 
 class RouteGenerator {
-
-  final _router =  GoRouter(
-      restorationScopeId: "restore",
-      initialLocation: "/dashboard",
-      navigatorKey: NavigatorKeyService()._rootKey,
-      errorBuilder: (context, state) {
-        return const ErrorView();
-      },
-      routes: [
-        ShellRoute(
-          
-          navigatorKey: NavigatorKeyService()._shellKey,
-          builder: (context, state, child) {
-            return HomeView(child: child);
-          },
-          routes: [
-            GoRoute(
-              
-                path: PathConstant.dashboard.value,
-                pageBuilder: (context, state) {
-                  return CustomTransitionPage(
-                    transitionDuration: const Duration(milliseconds: 0),
-                    child: const DashboardView(),
-                    transitionsBuilder:
-                        (context, animation, secondaryAnimation, child) {
-                      return FadeTransition(
-                        opacity: CurveTween(curve: Curves.easeInOut)
-                            .animate(animation),
-                        child: child,
-                      );
-                    },
-                  );
-                },
-                name: PathConstant.dashboard.name),
-            GoRoute(
-                path: PathConstant.items.value,
-                pageBuilder: (context, state) {
-                  return CustomTransitionPage(
-                    transitionDuration: const Duration(milliseconds: 0),
-                    child: const ItemsView(),
-                    transitionsBuilder:
-                        (context, animation, secondaryAnimation, child) {
-                      return FadeTransition(
-                        opacity: CurveTween(curve: Curves.easeInOut)
-                            .animate(animation),
-                        child: child,
-                      );
-                    },
-                  );
-                },
-                name: PathConstant.items.name),
-            GoRoute(
-                path: PathConstant.settings.value,
-                pageBuilder: (context, state) {
-                  return CustomTransitionPage(
-                    transitionDuration: const Duration(milliseconds: 0),
-                    child: const SettingsView(),
-                    transitionsBuilder:
-                        (context, animation, secondaryAnimation, child) {
-                      return FadeTransition(
-                        opacity: CurveTween(curve: Curves.easeInOut)
-                            .animate(animation),
-                        child: child,
-                      );
-                    },
-                  );
-                },
-                name: PathConstant.settings.name),
-            GoRoute(
-                path: PathConstant.search.value,
-                pageBuilder: (context, state) {
-                  return CustomTransitionPage(
-                    transitionDuration: const Duration(milliseconds: 0),
-                    child: const SearchView(),
-                    transitionsBuilder:
-                        (context, animation, secondaryAnimation, child) {
-                      return FadeTransition(
-                        opacity: CurveTween(curve: Curves.easeInOut)
-                            .animate(animation),
-                        child: child,
-                      );
-                    },
-                  );
-                },
-                name: PathConstant.search.name),
-            GoRoute(
-                path: PathConstant.notifications.value,
-                pageBuilder: (context, state) {
-                  return CustomTransitionPage(
-                    transitionDuration: const Duration(milliseconds: 0),
-                    child: const NotifcationView(),
-                    transitionsBuilder:
-                        (context, animation, secondaryAnimation, child) {
-                      return FadeTransition(
-                        opacity: CurveTween(curve: Curves.easeInOut)
-                            .animate(animation),
-                        child: child,
-                      );
-                    },
-                  );
-                },
-                name: PathConstant.notifications.name),
-          ],
-        ),
-        GoRoute(
-          path: PathConstant.login.value,
-          name: PathConstant.login.name,
-          builder: (context, state) {
-            return const LoginView();
-          },
-        ),
-        GoRoute(
-          path: PathConstant.onboard.value,
-          name: PathConstant.onboard.name,
-          builder: (context, state) {
-            return const OnboardView();
-          },
-        ),
-        GoRoute(
-          path: PathConstant.signup.value,
-          name: PathConstant.signup.name,
-          builder: (context, state) {
-            return const SignupView();
-          },
-        ),
-      ],
-    );
-  
-
+  final _router = GoRouter(
+    restorationScopeId: "restore",
+    initialLocation: "/dashboard",
+    navigatorKey: NavigatorKeyService()._rootKey,
+    errorBuilder: (context, state) {
+      return const ErrorView();
+    },
+    routes: [
+      ShellRoute(
+        navigatorKey: NavigatorKeyService()._shellKey,
+        builder: (context, state, child) {
+          return HomeView(child: child);
+        },
+        routes: [
+          GoRoute(
+              path: PathConstant.dashboard.value,
+              pageBuilder: (context, state) {
+                return CustomTransitionPage(
+                  transitionDuration: const Duration(milliseconds: 0),
+                  child: const DashboardView(),
+                  transitionsBuilder:
+                      (context, animation, secondaryAnimation, child) {
+                    return FadeTransition(
+                      opacity: CurveTween(curve: Curves.easeInOut)
+                          .animate(animation),
+                      child: child,
+                    );
+                  },
+                );
+              },
+              name: PathConstant.dashboard.name),
+          GoRoute(
+              path: PathConstant.items.value,
+              pageBuilder: (context, state) {
+                return CustomTransitionPage(
+                  transitionDuration: const Duration(milliseconds: 0),
+                  child: const ItemsView(),
+                  transitionsBuilder:
+                      (context, animation, secondaryAnimation, child) {
+                    return FadeTransition(
+                      opacity: CurveTween(curve: Curves.easeInOut)
+                          .animate(animation),
+                      child: child,
+                    );
+                  },
+                );
+              },
+              name: PathConstant.items.name),
+          GoRoute(
+              path: PathConstant.settings.value,
+              routes: [
+                GoRoute(
+                    path: PathConstant.userProfile.value,
+                    name: PathConstant.userProfile.value)
+              ],
+              pageBuilder: (context, state) {
+                return CustomTransitionPage(
+                  transitionDuration: const Duration(milliseconds: 0),
+                  child: const SettingsView(),
+                  transitionsBuilder:
+                      (context, animation, secondaryAnimation, child) {
+                    return FadeTransition(
+                      opacity: CurveTween(curve: Curves.easeInOut)
+                          .animate(animation),
+                      child: child,
+                    );
+                  },
+                );
+              },
+              name: PathConstant.settings.name),
+          GoRoute(
+              path: PathConstant.search.value,
+              pageBuilder: (context, state) {
+                return CustomTransitionPage(
+                  transitionDuration: const Duration(milliseconds: 0),
+                  child: const SearchView(),
+                  transitionsBuilder:
+                      (context, animation, secondaryAnimation, child) {
+                    return FadeTransition(
+                      opacity: CurveTween(curve: Curves.easeInOut)
+                          .animate(animation),
+                      child: child,
+                    );
+                  },
+                );
+              },
+              name: PathConstant.search.name),
+          GoRoute(
+              path: PathConstant.notifications.value,
+              pageBuilder: (context, state) {
+                return CustomTransitionPage(
+                  transitionDuration: const Duration(milliseconds: 0),
+                  child: const NotifcationView(),
+                  transitionsBuilder:
+                      (context, animation, secondaryAnimation, child) {
+                    return FadeTransition(
+                      opacity: CurveTween(curve: Curves.easeInOut)
+                          .animate(animation),
+                      child: child,
+                    );
+                  },
+                );
+              },
+              name: PathConstant.notifications.name),
+        ],
+      ),
+      GoRoute(
+        path: PathConstant.login.value,
+        name: PathConstant.login.name,
+        builder: (context, state) {
+          return const LoginView();
+        },
+      ),
+      GoRoute(
+        path: PathConstant.onboard.value,
+        name: PathConstant.onboard.name,
+        builder: (context, state) {
+          return const OnboardView();
+        },
+      ),
+      GoRoute(
+        path: PathConstant.signup.value,
+        name: PathConstant.signup.name,
+        builder: (context, state) {
+          return const SignupView();
+        },
+      ),
+    ],
+  );
 
   GoRouter getRouter() {
     return _router;
