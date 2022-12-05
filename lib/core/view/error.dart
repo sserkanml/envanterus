@@ -1,6 +1,8 @@
+import 'package:envanterus/core/constant/path_constant.dart';
 import 'package:envanterus/core/util/path.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:kartal/kartal.dart';
 
 class ErrorView extends StatelessWidget {
@@ -10,6 +12,12 @@ class ErrorView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          onPressed: () {
+            context.push(PathConstant.dashboard.value);
+          },
+          icon: const Icon(Icons.arrow_back),
+        ),
         centerTitle: true,
         title: Text(
           'Sayfa Bulunamadı',

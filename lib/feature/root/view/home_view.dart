@@ -24,8 +24,8 @@ class _HomeViewState extends State<HomeView> {
           height: 60,
           width: context.dynamicWidth(.2),
           child: Card(
-            shape: const RoundedRectangleBorder(
-                borderRadius: BorderRadius.all(Radius.circular(10))),
+            margin: EdgeInsets.zero,
+           
             elevation: 2,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,

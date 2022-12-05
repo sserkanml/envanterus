@@ -1,26 +1,42 @@
 import 'package:envanterus/core/util/path.dart';
 import 'package:envanterus/feature/root/model/inventory_summary_model.dart';
+import 'package:envanterus/feature/root/view_model/items_create_view_model.dart';
+import 'package:envanterus/feature/root/view_model/items_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:kartal/kartal.dart';
 
-class ItemsView extends StatelessWidget {
+class ItemsView extends StatefulWidget {
   const ItemsView({Key? key}) : super(key: key);
+
+  @override
+  State<ItemsView> createState() => _ItemsViewState();
+}
+
+class _ItemsViewState extends State<ItemsView> {
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        child: const Icon(Icons.add,color: Colors.white,),
+        onPressed: () {
+          ItemsCreateScreenViewModel.getShowModel(context: context);
+        },
+        child: const Icon(
+          Icons.add,
+          color: Colors.white,
+        ),
       ),
       appBar: appbar(context),
       body: SafeArea(
-          child: SingleChildScrollView(
         child: Column(
           children: <Widget>[
             Card(
-              elevation: 1,
+              elevation: 24,
               margin: EdgeInsets.zero,
               child: Padding(
                 padding: const EdgeInsets.all(12.0),
@@ -56,9 +72,50 @@ class ItemsView extends StatelessWidget {
                 ),
               ),
             ),
+            Expanded(
+                child: Card(
+              elevation: 24,
+              margin: EdgeInsets.zero,
+              child: SizedBox(
+                width: context.dynamicWidth(1),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        TextButton.icon(
+                          icon: Icon(
+                            Icons.sort,
+                            color: context.colorScheme.onSurface,
+                            size: 14,
+                          ),
+                          onPressed: () {},
+                          label: Text(
+                            "Son Güncellenler",
+                            style: context.textTheme.bodySmall!.copyWith(),
+                          ),
+                        ),
+                        IconButton(
+                          onPressed: () {},
+                          icon: SvgPicture.asset(
+                            context.getPath(
+                                type: AssetType.svg,
+                                file: "dashboardsolid.svg"),
+                            width: 20,
+                            height: 20,
+                            color: context.colorScheme.onSurface,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ))
           ],
         ),
-      )),
+      ),
     );
   }
 
@@ -103,6 +160,9 @@ class ItemsView extends StatelessWidget {
           width: 15,
         ),
         InkWell(
+          onTap: () {
+            ItemsViewModel.getShowBottom(context: context);
+          },
           child: SvgPicture.asset(
             context.getPath(
               type: AssetType.svg,

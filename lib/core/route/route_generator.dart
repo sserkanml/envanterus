@@ -5,6 +5,7 @@ import 'package:envanterus/feature/authentication/view/signup_view.dart';
 import 'package:envanterus/feature/notification/view/notifcation_view.dart';
 import 'package:envanterus/feature/root/view/dashboard_view.dart';
 import 'package:envanterus/feature/root/view/home_view.dart';
+import 'package:envanterus/feature/root/view/items_search_view.dart';
 import 'package:envanterus/feature/root/view/items_view.dart';
 import 'package:envanterus/feature/search/view/search_view.dart';
 import 'package:envanterus/feature/settings/view/activity_history_view.dart';
@@ -67,6 +68,25 @@ class RouteGenerator {
               name: PathConstant.dashboard.name),
           GoRoute(
               path: PathConstant.items.value,
+              routes: [
+                GoRoute(
+                    pageBuilder: (context, state) {
+                      return CustomTransitionPage(
+                        transitionDuration: const Duration(milliseconds: 0),
+                        child: const ItemsSearchView(),
+                        transitionsBuilder:
+                            (context, animation, secondaryAnimation, child) {
+                          return FadeTransition(
+                            opacity: CurveTween(curve: Curves.easeInOut)
+                                .animate(animation),
+                            child: child,
+                          );
+                        },
+                      );
+                    },
+                    path: PathConstant.itemsSearch.value,
+                    name: PathConstant.itemsSearch.name),
+              ],
               pageBuilder: (context, state) {
                 return CustomTransitionPage(
                   transitionDuration: const Duration(milliseconds: 0),

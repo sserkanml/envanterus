@@ -4,6 +4,7 @@ enum PathConstant {
   onboard("/onboard", "onboard"),
   dashboard("/dashboard", "dashboard"),
   items("/items", "items"),
+  itemsSearch("itemsSearch", "itemsSearch"),
   userProfile("userProfile", "userProfile"),
   insideSettings("insideSettings", "insideSettings"),
   companyDetail("companyDetail", "companyDetail"),
