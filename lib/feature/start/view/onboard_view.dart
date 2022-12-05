@@ -73,7 +73,8 @@ class _OnboardViewState extends State<OnboardView> {
                                     child: Text(
                                   onboardData[index].title,
                                   textAlign: TextAlign.center,
-                                  style: context.textTheme.headline6,
+                                  style: context.textTheme.bodyLarge!.copyWith(
+                                      color: context.colorScheme.onSurface),
                                 )))
                       ],
                     ),

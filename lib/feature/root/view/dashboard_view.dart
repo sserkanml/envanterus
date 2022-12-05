@@ -12,7 +12,11 @@ class DashboardView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Dashbaord'),
+        title: Text(
+          'Dashbaord',
+          style: context.textTheme.bodyLarge!
+              .copyWith(color: context.colorScheme.onSurface),
+        ),
       ),
       body: SafeArea(
           child: SingleChildScrollView(
@@ -178,8 +182,9 @@ class DashboardView extends StatelessWidget {
                       return const SizedBox(
                         width: 160,
                         child: Card(
-                          shape: RoundedRectangleBorder(borderRadius: 
-                          BorderRadius.all(Radius.circular(10))),
+                          shape: RoundedRectangleBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(10))),
                           elevation: 2,
                           margin: EdgeInsets.only(right: 20),
                           child: Text('text'),

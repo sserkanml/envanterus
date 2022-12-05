@@ -20,7 +20,9 @@ class LightTheme {
       inputDecoratorSchemeColor: SchemeColor.onTertiaryContainer,
       inputDecoratorIsFilled: false,
       inputDecoratorBorderType: FlexInputBorderType.outline,
-      inputDecoratorRadius: 0.0,
+     inputDecoratorRadius: 10.0,
+      
+      inputDecoratorBorderWidth: 0.5,
       inputDecoratorUnfocusedHasBorder: true,
       cardRadius: 0.0,
     ),

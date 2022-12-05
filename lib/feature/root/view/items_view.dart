@@ -12,7 +12,7 @@ class ItemsView extends StatelessWidget {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
-        child: const Icon(Icons.add),
+        child: const Icon(Icons.add,color: Colors.white,),
       ),
       appBar: appbar(context),
       body: SafeArea(
@@ -64,7 +64,11 @@ class ItemsView extends StatelessWidget {
 
   AppBar appbar(BuildContext context) {
     return AppBar(
-      title: const Text('Malzemeler'),
+      title: Text(
+        'Malzemeler',
+        style: context.textTheme.bodyLarge!
+            .copyWith(color: context.colorScheme.onSurface),
+      ),
       leadingWidth: 30,
       elevation: 2,
       actions: [

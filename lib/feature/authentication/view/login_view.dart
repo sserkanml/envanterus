@@ -28,7 +28,8 @@ class _LoginViewState extends State<LoginView> {
       appBar: AppBar(
         title: Text(
           'Envanterus',
-          style: context.textTheme.headline5,
+          style: context.textTheme.bodyLarge!
+              .copyWith(color: context.colorScheme.onSurface),
         ),
         leading: IconButton(
           onPressed: () {
@@ -75,7 +76,8 @@ class _LoginViewState extends State<LoginView> {
                     children: <Widget>[
                       Text(
                         'Tekrardan Hoşgeldin !',
-                        style: context.textTheme.headline6!
+                        style: context.textTheme.bodyLarge!
+                            .copyWith(color: context.colorScheme.onSurface)
                             .copyWith(fontWeight: FontWeight.bold),
                       ),
                       const SizedBox(

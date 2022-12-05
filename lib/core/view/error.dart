@@ -1,6 +1,7 @@
 import 'package:envanterus/core/util/path.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:kartal/kartal.dart';
 
 class ErrorView extends StatelessWidget {
   const ErrorView({Key? key}) : super(key: key);
@@ -10,7 +11,11 @@ class ErrorView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: const Text('Sayfa Bulunamadı'),
+        title: Text(
+          'Sayfa Bulunamadı',
+          style: context.textTheme.bodyLarge!
+              .copyWith(color: context.colorScheme.onSurface),
+        ),
       ),
       body: SafeArea(
           child: Center(

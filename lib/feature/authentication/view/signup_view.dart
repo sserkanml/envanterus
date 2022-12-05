@@ -34,7 +34,8 @@ class _SignupViewState extends State<SignupView> {
       appBar: AppBar(
         title: Text(
           'Envanterus',
-          style: context.textTheme.headline5,
+          style: context.textTheme.bodyLarge!
+              .copyWith(color: context.colorScheme.onSurface),
         ),
         leading: IconButton(
           onPressed: () {
@@ -83,7 +84,8 @@ class _SignupViewState extends State<SignupView> {
                       children: <Widget>[
                         Text(
                           'Hesap Oluştur !',
-                          style: context.textTheme.headline6!
+                          style: context.textTheme.bodyLarge!
+                              .copyWith(color: context.colorScheme.onSurface)
                               .copyWith(fontWeight: FontWeight.bold),
                         ),
                         const SizedBox(
