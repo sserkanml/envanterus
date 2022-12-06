@@ -14,7 +14,7 @@ class ErrorView extends StatelessWidget {
       appBar: AppBar(
         leading: IconButton(
           onPressed: () {
-            context.push(PathConstant.dashboard.value);
+            Navigator.pop(context);
           },
           icon: const Icon(Icons.arrow_back),
         ),

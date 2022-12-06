@@ -1,13 +1,19 @@
 import 'package:adaptive_theme/adaptive_theme.dart';
+import 'package:envanterus/core/constant/service_constant.dart';
 import 'package:envanterus/core/route/route_generator.dart';
 import 'package:envanterus/core/theme/dark_theme.dart';
 import 'package:envanterus/core/theme/light_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_framework/responsive_framework.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   final savedThemeMode = await AdaptiveTheme.getThemeMode();
+
+ var hey= await Supabase.initialize(
+      url: ServiceConstant.urlProject, anonKey: ServiceConstant.apiKey);
+    
 
   runApp(MyApp(
     themeMode: savedThemeMode,

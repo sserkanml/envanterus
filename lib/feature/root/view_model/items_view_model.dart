@@ -27,14 +27,17 @@ class ItemsViewModel {
                 },
                 title: Text(showmodalbottomsheetdata[index].label,
                     style: context.textTheme.bodySmall),
-                leading: SvgPicture.asset(
-                  context.getPath(
-                    type: AssetType.svg,
-                    file: showmodalbottomsheetdata[index].image,
+                leading: Padding(
+                  padding: const EdgeInsets.only(top:4.0),
+                  child: SvgPicture.asset(
+                    context.getPath(
+                      type: AssetType.svg,
+                      file: showmodalbottomsheetdata[index].image,
+                    ),
+                    width: 15,
+                    height: 15,
+                    color: context.colorScheme.onSurface,
                   ),
-                  width: 15,
-                  height: 15,
-                  color: context.colorScheme.onSurface,
                 ));
           },
           itemCount: showmodalbottomsheetdata.length,

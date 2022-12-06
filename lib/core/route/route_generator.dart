@@ -3,10 +3,17 @@ import 'package:envanterus/core/view/error.dart';
 import 'package:envanterus/feature/authentication/view/login_view.dart';
 import 'package:envanterus/feature/authentication/view/signup_view.dart';
 import 'package:envanterus/feature/notification/view/notifcation_view.dart';
+import 'package:envanterus/feature/root/view/create_file_view.dart';
+import 'package:envanterus/feature/root/view/create_folder_view.dart';
 import 'package:envanterus/feature/root/view/dashboard_view.dart';
 import 'package:envanterus/feature/root/view/home_view.dart';
+import 'package:envanterus/feature/root/view/inventory_summary_view.dart';
 import 'package:envanterus/feature/root/view/items_search_view.dart';
 import 'package:envanterus/feature/root/view/items_view.dart';
+import 'package:envanterus/feature/root/view/low_stock_view.dart';
+import 'package:envanterus/feature/root/view/move_summary_view.dart';
+import 'package:envanterus/feature/root/view/qty_view.dart';
+import 'package:envanterus/feature/root/view/transaction_report_view.dart';
 import 'package:envanterus/feature/search/view/search_view.dart';
 import 'package:envanterus/feature/settings/view/activity_history_view.dart';
 import 'package:envanterus/feature/settings/view/bulk_import_view.dart';
@@ -37,7 +44,7 @@ class NavigatorKeyService {
 class RouteGenerator {
   final _router = GoRouter(
     restorationScopeId: "restore",
-    initialLocation: "/dashboard",
+    initialLocation: "/onboard",
     navigatorKey: NavigatorKeyService._rootKey,
     errorBuilder: (context, state) {
       return const ErrorView();
@@ -51,6 +58,163 @@ class RouteGenerator {
         routes: [
           GoRoute(
               path: PathConstant.dashboard.value,
+              routes: [
+                GoRoute(
+                    path: PathConstant.lowStock.value,
+                    parentNavigatorKey: NavigatorKeyService._rootKey,
+                    pageBuilder: (context, state) {
+                      return CustomTransitionPage(
+                        transitionDuration: const Duration(milliseconds: 500),
+                        child: const LowStockView(),
+                        transitionsBuilder:
+                            (context, animation, secondaryAnimation, child) {
+                          return Stack(
+                            children: <Widget>[
+                              SlideTransition(
+                                position: Tween<Offset>(
+                                  begin: const Offset(0.0, 0.0),
+                                  end: const Offset(-1.0, 0.0),
+                                ).animate(animation),
+                                child: const DashboardView(),
+                              ),
+                              SlideTransition(
+                                position: Tween<Offset>(
+                                  begin: const Offset(1.0, 0.0),
+                                  end: Offset.zero,
+                                ).animate(animation),
+                                child: child,
+                              )
+                            ],
+                          );
+                        },
+                      );
+                    },
+                    name: PathConstant.lowStock.name),
+                GoRoute(
+                    path: PathConstant.transactionReport.value,
+                    parentNavigatorKey: NavigatorKeyService._rootKey,
+                    pageBuilder: (context, state) {
+                      return CustomTransitionPage(
+                        transitionDuration: const Duration(milliseconds: 500),
+                        child: const TransactionReportView(),
+                        transitionsBuilder:
+                            (context, animation, secondaryAnimation, child) {
+                          return Stack(
+                            children: <Widget>[
+                              SlideTransition(
+                                position: Tween<Offset>(
+                                  begin: const Offset(0.0, 0.0),
+                                  end: const Offset(-1.0, 0.0),
+                                ).animate(animation),
+                                child: const DashboardView(),
+                              ),
+                              SlideTransition(
+                                position: Tween<Offset>(
+                                  begin: const Offset(1.0, 0.0),
+                                  end: Offset.zero,
+                                ).animate(animation),
+                                child: child,
+                              )
+                            ],
+                          );
+                        },
+                      );
+                    },
+                    name: PathConstant.transactionReport.name),
+                GoRoute(
+                    path: PathConstant.moveSummary.value,
+                    parentNavigatorKey: NavigatorKeyService._rootKey,
+                    pageBuilder: (context, state) {
+                      return CustomTransitionPage(
+                        transitionDuration: const Duration(milliseconds: 500),
+                        child: const MoveSummaryView(),
+                        transitionsBuilder:
+                            (context, animation, secondaryAnimation, child) {
+                          return Stack(
+                            children: <Widget>[
+                              SlideTransition(
+                                position: Tween<Offset>(
+                                  begin: const Offset(0.0, 0.0),
+                                  end: const Offset(-1.0, 0.0),
+                                ).animate(animation),
+                                child: const DashboardView(),
+                              ),
+                              SlideTransition(
+                                position: Tween<Offset>(
+                                  begin: const Offset(1.0, 0.0),
+                                  end: Offset.zero,
+                                ).animate(animation),
+                                child: child,
+                              )
+                            ],
+                          );
+                        },
+                      );
+                    },
+                    name: PathConstant.moveSummary.name),
+                GoRoute(
+                    path: PathConstant.qtyChanges.value,
+                    parentNavigatorKey: NavigatorKeyService._rootKey,
+                    pageBuilder: (context, state) {
+                      return CustomTransitionPage(
+                        transitionDuration: const Duration(milliseconds: 500),
+                        child: const QtyView(),
+                        transitionsBuilder:
+                            (context, animation, secondaryAnimation, child) {
+                          return Stack(
+                            children: <Widget>[
+                              SlideTransition(
+                                position: Tween<Offset>(
+                                  begin: const Offset(0.0, 0.0),
+                                  end: const Offset(-1.0, 0.0),
+                                ).animate(animation),
+                                child: const DashboardView(),
+                              ),
+                              SlideTransition(
+                                position: Tween<Offset>(
+                                  begin: const Offset(1.0, 0.0),
+                                  end: Offset.zero,
+                                ).animate(animation),
+                                child: child,
+                              )
+                            ],
+                          );
+                        },
+                      );
+                    },
+                    name: PathConstant.qtyChanges.name),
+                GoRoute(
+                    path: PathConstant.inventorySummary.value,
+                    parentNavigatorKey: NavigatorKeyService._rootKey,
+                    pageBuilder: (context, state) {
+                      return CustomTransitionPage(
+                        transitionDuration: const Duration(milliseconds: 500),
+                        child: const InventorySummaryView(),
+                        transitionsBuilder:
+                            (context, animation, secondaryAnimation, child) {
+                          return Stack(
+                            children: <Widget>[
+                              SlideTransition(
+                                position: Tween<Offset>(
+                                  begin: const Offset(0.0, 0.0),
+                                  end: const Offset(-1.0, 0.0),
+                                ).animate(animation),
+                                child: const DashboardView(),
+                              ),
+                              SlideTransition(
+                                position: Tween<Offset>(
+                                  begin: const Offset(1.0, 0.0),
+                                  end: Offset.zero,
+                                ).animate(animation),
+                                child: child,
+                              )
+                            ],
+                          );
+                        },
+                      );
+                    },
+                    name: PathConstant.inventorySummary.name),
+              ],
               pageBuilder: (context, state) {
                 return CustomTransitionPage(
                   transitionDuration: const Duration(milliseconds: 0),
@@ -69,6 +233,42 @@ class RouteGenerator {
           GoRoute(
               path: PathConstant.items.value,
               routes: [
+                GoRoute(
+                    parentNavigatorKey: NavigatorKeyService._rootKey,
+                    pageBuilder: (context, state) {
+                      return CustomTransitionPage(
+                        transitionDuration: const Duration(milliseconds: 400),
+                        child: const CreateFileView(),
+                        transitionsBuilder:
+                            (context, animation, secondaryAnimation, child) {
+                          return FadeTransition(
+                            opacity: CurveTween(curve: Curves.easeInOut)
+                                .animate(animation),
+                            child: child,
+                          );
+                        },
+                      );
+                    },
+                    path: PathConstant.createFile.value,
+                    name: PathConstant.createFile.name),
+                GoRoute(
+                    parentNavigatorKey: NavigatorKeyService._rootKey,
+                    pageBuilder: (context, state) {
+                      return CustomTransitionPage(
+                        transitionDuration: const Duration(milliseconds: 400),
+                        child: const CreateFolderView(),
+                        transitionsBuilder:
+                            (context, animation, secondaryAnimation, child) {
+                          return FadeTransition(
+                            opacity: CurveTween(curve: Curves.easeInOut)
+                                .animate(animation),
+                            child: child,
+                          );
+                        },
+                      );
+                    },
+                    path: PathConstant.createFolder.value,
+                    name: PathConstant.createFolder.name),
                 GoRoute(
                     pageBuilder: (context, state) {
                       return CustomTransitionPage(

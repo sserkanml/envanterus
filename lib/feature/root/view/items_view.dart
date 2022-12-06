@@ -1,9 +1,11 @@
+import 'package:envanterus/core/constant/path_constant.dart';
 import 'package:envanterus/core/util/path.dart';
 import 'package:envanterus/feature/root/model/inventory_summary_model.dart';
 import 'package:envanterus/feature/root/view_model/items_create_view_model.dart';
 import 'package:envanterus/feature/root/view_model/items_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:kartal/kartal.dart';
 
 class ItemsView extends StatefulWidget {
@@ -19,6 +21,8 @@ class _ItemsViewState extends State<ItemsView> {
     super.initState();
   }
 
+  bool isClickListForm = false;
+  bool isClickLastType = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,8 +40,11 @@ class _ItemsViewState extends State<ItemsView> {
         child: Column(
           children: <Widget>[
             Card(
-              elevation: 24,
-              margin: EdgeInsets.zero,
+              elevation: 2,
+              margin: const EdgeInsets.symmetric(
+                vertical: 1.0,
+                horizontal: 0,
+              ),
               child: Padding(
                 padding: const EdgeInsets.all(12.0),
                 child: Row(
@@ -74,7 +81,7 @@ class _ItemsViewState extends State<ItemsView> {
             ),
             Expanded(
                 child: Card(
-              elevation: 24,
+              elevation: 3,
               margin: EdgeInsets.zero,
               child: SizedBox(
                 width: context.dynamicWidth(1),
@@ -86,24 +93,33 @@ class _ItemsViewState extends State<ItemsView> {
                       children: [
                         TextButton.icon(
                           icon: Icon(
-                            Icons.sort,
+                            isClickLastType ? Icons.sort_by_alpha : Icons.sort,
                             color: context.colorScheme.onSurface,
                             size: 14,
                           ),
-                          onPressed: () {},
+                          onPressed: () {
+                            setState(() {
+                              isClickLastType = !isClickLastType;
+                            });
+                          },
                           label: Text(
                             "Son Güncellenler",
                             style: context.textTheme.bodySmall!.copyWith(),
                           ),
                         ),
                         IconButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            setState(() {
+                              isClickListForm = !isClickListForm;
+                            });
+                          },
                           icon: SvgPicture.asset(
                             context.getPath(
                                 type: AssetType.svg,
-                                file: "dashboardsolid.svg"),
-                            width: 20,
-                            height: 20,
+                                file:
+                                    isClickListForm ? "bar.svg" : "square.svg"),
+                            width: 15,
+                            height: 15,
                             color: context.colorScheme.onSurface,
                           ),
                         ),
@@ -130,6 +146,9 @@ class _ItemsViewState extends State<ItemsView> {
       elevation: 2,
       actions: [
         InkWell(
+          onTap: () {
+            context.push("/items/${PathConstant.itemsSearch.value}");
+          },
           child: SvgPicture.asset(
             context.getPath(
               type: AssetType.svg,

@@ -1,6 +1,8 @@
+import 'package:envanterus/core/constant/path_constant.dart';
 import 'package:envanterus/core/util/path.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:kartal/kartal.dart';
 
 class ItemsCreateScreenViewModel {
@@ -24,14 +26,18 @@ class ItemsCreateScreenViewModel {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     const Text('Ekleme Yapmak:'),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                     SizedBox(
-                      height:50,
+                      height: 50,
                       width: context.dynamicWidth(1),
                       child: ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.pop(context);
+                          context
+                              .push("/items/${PathConstant.createFile.value}");
+                        },
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -56,10 +62,14 @@ class ItemsCreateScreenViewModel {
                       height: 20,
                     ),
                     SizedBox(
-                      height:50,
+                      height: 50,
                       width: context.dynamicWidth(1),
                       child: ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.pop(context);
+                          context.push(
+                              "/items/${PathConstant.createFolder.value}");
+                        },
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [

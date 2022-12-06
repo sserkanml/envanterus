@@ -1,3 +1,5 @@
+import 'package:envanterus/core/constant/path_constant.dart';
+
 class GridViewModel {
   final String title;
   final String description;
@@ -16,21 +18,21 @@ List<GridViewModel> gridviewdata = [
       title: "Düşük Stok",
       description: "Düşük envanter olan tüm stok kalemlerini görüntüle",
       image: "uparrow.svg",
-      path: ""),
+      path: PathConstant.lowStock.value),
   GridViewModel(
       title: "Miktar Değişikleri",
       description: "bir kalem için tüm giriş ve çıkışları görüntüleyin",
       image: "chart.svg",
-      path: ""),
+      path: PathConstant.qtyChanges.value),
   GridViewModel(
       title: "Taşıma Özetleri",
       description: "yerleri taşınan envanteri takip edin",
       image: "folder.svg",
-      path: ""),
+      path: PathConstant.moveSummary.value),
   GridViewModel(
       title: "İşlem Geçmişi",
       description:
           "tüm miktar güncellemelerini, hareketlerini ve klonları görün",
       image: "rotate.svg",
-      path: ""),
+      path: PathConstant.transactionReport.value),
 ];

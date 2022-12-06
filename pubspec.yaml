@@ -49,6 +49,7 @@ dependencies:
   page_transition: ^2.0.9
   supabase_flutter: ^1.2.2
   google_fonts: ^3.0.1
+  dotted_border: ^2.0.0+3
   
 
 dev_dependencies:

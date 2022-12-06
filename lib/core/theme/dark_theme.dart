@@ -13,12 +13,13 @@ class DarkTheme {
   ThemeData theme = FlexThemeData.dark(
     appBarBackground: const Color(0xFF22282E),
     subThemesData: const FlexSubThemesData(
+      inputDecoratorBorderType: FlexInputBorderType.underline,
+       outlinedButtonOutlineSchemeColor: SchemeColor.onPrimaryContainer,
       inputDecoratorIsFilled: false,
       textButtonRadius: 0.0,
       elevatedButtonRadius: 0.0,
       outlinedButtonRadius: 0.0,
       inputDecoratorBorderWidth: 0.5,
-      inputDecoratorBorderType: FlexInputBorderType.outline,
       inputDecoratorRadius: 10.0,
       inputDecoratorUnfocusedHasBorder: true,
       cardRadius: 0.0,
